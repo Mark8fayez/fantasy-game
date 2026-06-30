@@ -1,7 +1,7 @@
 FROM node:20-alpine
 WORKDIR /app
-COPY package*.json ./
+COPY fantasy-game/package*.json ./
 RUN npm install --omit=dev
-COPY . .
+COPY fantasy-game/ .
 EXPOSE 3000
 CMD ["npm", "start"]
