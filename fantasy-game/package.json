@@ -1,0 +1,15 @@
+{
+  "name": "fantasy-game",
+  "version": "1.0.0",
+  "description": "A 5-player fantasy game with an admin dashboard and a user app.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

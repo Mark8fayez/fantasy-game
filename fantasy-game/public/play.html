@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Play — Fantasy 5</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand"><a href="index.html" style="color:inherit">Fantasy<span>5</span></a></div>
+    <nav>
+      <a href="leaderboard.html">Leaderboard</a>
+      <a href="#" id="logoutLink" class="hidden">Log out</a>
+    </nav>
+  </div>
+
+  <div class="container">
+    <div id="msg" class="msg"></div>
+
+    <!-- LOGGED OUT: login / register -->
+    <div id="authView" class="hidden">
+      <div class="grid cols-2">
+        <div class="card">
+          <h2>Log in</h2>
+          <label>Team / player name</label>
+          <input id="loginName" placeholder="e.g. Ahmed" />
+          <label>Password</label>
+          <input id="loginPass" type="password" placeholder="Your password" />
+          <div class="row" style="margin-top:14px"><button id="loginBtn">Log in</button></div>
+        </div>
+        <div class="card">
+          <h2>New here? Sign up</h2>
+          <label>Choose a name</label>
+          <input id="regName" placeholder="e.g. Ahmed" />
+          <label>Choose a password</label>
+          <input id="regPass" type="password" placeholder="At least 4 characters" />
+          <div class="row" style="margin-top:14px"><button id="regBtn">Create account</button></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LOGGED IN, NO TEAM YET: team builder -->
+    <div id="builderView" class="hidden">
+      <div class="card">
+        <h2>Build your team</h2>
+        <p class="muted">Pick exactly <b id="teamSizeText">5</b> players. Stay within your budget. You can only do this once!</p>
+        <label>Team name</label>
+        <input id="teamName" placeholder="e.g. The Champions" />
+        <div class="row" style="margin:14px 0">
+          <div class="budgetbar">Budget: <span id="budgetLeft" class="points">0</span> left
+            <span class="muted">/ <span id="budgetTotal">0</span></span>
+          </div>
+          <div class="spacer"></div>
+          <div class="budgetbar">Picked: <span id="pickedCount">0</span>/<span id="teamSizeText2">5</span></div>
+        </div>
+        <div id="playerPicker"></div>
+        <div class="row" style="margin-top:14px">
+          <button id="saveTeamBtn">Save my team</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- LOGGED IN, HAS TEAM: my team -->
+    <div id="teamView" class="hidden">
+      <div class="card">
+        <div class="row">
+          <h2 style="margin:0" id="myTeamName">My Team</h2>
+          <div class="spacer"></div>
+          <span class="pill">Total points: <b id="myTotal" class="points">0</b></span>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Your players</h2>
+        <table>
+          <thead><tr><th>Player</th><th>Position</th><th>Price</th><th>Points</th></tr></thead>
+          <tbody id="myPlayers"></tbody>
+        </table>
+      </div>
+      <div class="center">
+        <a href="leaderboard.html"><button class="secondary">View leaderboard →</button></a>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script src="play.js"></script>
+</body>
+</html>
