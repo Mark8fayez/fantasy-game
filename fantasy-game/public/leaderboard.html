@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leaderboard — Fantasy 5</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand"><a href="index.html" style="color:inherit">Fantasy<span>5</span></a></div>
+    <nav>
+      <a href="play.html">Play</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <div class="row">
+        <h2 style="margin:0">🏆 Overall leaderboard</h2>
+        <div class="spacer"></div>
+        <span class="muted">Top managers by total points</span>
+      </div>
+      <table style="margin-top:12px">
+        <thead><tr><th class="rank">#</th><th>Manager</th><th>Team</th><th>Points</th></tr></thead>
+        <tbody id="overall"></tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="row">
+        <h2 style="margin:0">📅 Weekly leaderboard</h2>
+        <div class="spacer"></div>
+        <select id="weekSelect" style="width:auto"></select>
+      </div>
+      <div id="winnerBanner" class="msg ok" style="display:none"></div>
+      <table style="margin-top:12px">
+        <thead><tr><th class="rank">#</th><th>Manager</th><th>Team</th><th>Week points</th></tr></thead>
+        <tbody id="weekly"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script src="leaderboard.js"></script>
+</body>
+</html>

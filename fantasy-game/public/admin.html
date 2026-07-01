@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Fantasy 5</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand"><a href="index.html" style="color:inherit">Fantasy<span>5</span> · Admin</a></div>
+    <nav>
+      <a href="leaderboard.html">Leaderboard</a>
+      <a href="#" id="logoutLink" class="hidden">Log out</a>
+    </nav>
+  </div>
+
+  <div class="container">
+    <div id="msg" class="msg"></div>
+
+    <!-- ADMIN LOGIN -->
+    <div id="loginView" class="hidden">
+      <div class="card" style="max-width:420px;margin:40px auto">
+        <h2>Admin login</h2>
+        <label>Admin password</label>
+        <input id="adminPass" type="password" placeholder="Enter admin password" />
+        <div class="row" style="margin-top:14px"><button id="adminLoginBtn">Enter dashboard</button></div>
+      </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="dashView" class="hidden">
+      <div class="tabs">
+        <button data-tab="players" class="active">Players</button>
+        <button data-tab="events">Events &amp; Points</button>
+        <button data-tab="gameweeks">Gameweeks</button>
+        <button data-tab="settings">Settings</button>
+        <button data-tab="board">Leaderboard</button>
+      </div>
+
+      <!-- PLAYERS TAB -->
+      <div id="tab-players">
+        <div class="card">
+          <h2>Add a player</h2>
+          <div class="grid cols-2">
+            <div><label>Name</label><input id="pName" placeholder="e.g. Mohamed Salah" /></div>
+            <div><label>Position (free text)</label><input id="pPos" placeholder="e.g. Forward" /></div>
+          </div>
+          <label>Price</label><input id="pPrice" type="number" value="10" />
+          <div class="row" style="margin-top:14px"><button id="addPlayerBtn">Add player</button></div>
+        </div>
+        <div class="card">
+          <h2>All players</h2>
+          <table>
+            <thead><tr><th>Name</th><th>Position</th><th>Price</th><th>Points</th><th></th></tr></thead>
+            <tbody id="playersBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- EVENTS TAB -->
+      <div id="tab-events" class="hidden">
+        <div class="card">
+          <h2>Record an event (points apply automatically)</h2>
+          <div class="grid cols-2">
+            <div><label>Player</label><select id="evPlayer"></select></div>
+            <div><label>Gameweek</label><select id="evWeek"></select></div>
+          </div>
+          <div class="grid cols-2">
+            <div><label>Event</label>
+              <select id="evType">
+                <option value="goal">Goal (+3)</option>
+                <option value="assist">Assist (+2)</option>
+                <option value="clean_sheet">Clean sheet (+2)</option>
+                <option value="yellow_card">Yellow card (-1)</option>
+                <option value="red_card">Red card (-3)</option>
+                <option value="manual">Manual adjustment (custom)</option>
+              </select>
+            </div>
+            <div id="customWrap" class="hidden"><label>Custom points (+/-)</label><input id="evCustom" type="number" value="0" /></div>
+          </div>
+          <div class="row" style="margin-top:14px"><button id="addEventBtn">Apply event</button></div>
+        </div>
+        <div class="card">
+          <h2>Recent events</h2>
+          <table>
+            <thead><tr><th>Player</th><th>Event</th><th>Week</th><th>Points</th><th></th></tr></thead>
+            <tbody id="eventsBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- GAMEWEEKS TAB -->
+      <div id="tab-gameweeks" class="hidden">
+        <div class="card">
+          <h2>Create a gameweek (round)</h2>
+          <div class="grid cols-2">
+            <div><label>Name</label><input id="gwName" placeholder="e.g. Week 1" /></div>
+            <div><label>Week number</label><input id="gwNum" type="number" value="1" /></div>
+          </div>
+          <div class="row" style="margin-top:14px"><button id="addGwBtn">Add gameweek</button></div>
+        </div>
+        <div class="card">
+          <h2>All gameweeks</h2>
+          <table>
+            <thead><tr><th>#</th><th>Name</th><th></th></tr></thead>
+            <tbody id="gwBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- SETTINGS TAB -->
+      <div id="tab-settings" class="hidden">
+        <div class="card" style="max-width:480px">
+          <h2>Game settings</h2>
+          <label>Budget given to each manager</label>
+          <input id="setBudget" type="number" />
+          <label>Players per team</label>
+          <input id="setTeamSize" type="number" />
+          <p class="muted" style="font-size:13px">Tip: change team size before people start building teams.</p>
+          <div class="row" style="margin-top:14px"><button id="saveSettingsBtn">Save settings</button></div>
+        </div>
+      </div>
+
+      <!-- LEADERBOARD TAB -->
+      <div id="tab-board" class="hidden">
+        <div class="card">
+          <h2>🏆 Overall leaderboard</h2>
+          <table>
+            <thead><tr><th class="rank">#</th><th>Manager</th><th>Team</th><th>Points</th></tr></thead>
+            <tbody id="boardBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
